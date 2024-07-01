@@ -1,0 +1,88 @@
+/* Padrão de cores
+azul: #034AA9;
+cinza: #3B3B3B;
+branco: #fff;
+
+*/
+
+.roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+header nav ul li img {
+    width: 50px;
+}
+
+header {
+    background-color: #ffffff;
+    color: #034ba970;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #3B3B3B;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+nav ul li.active a {
+    color: #034AA9;
+}
+
+nav ul li a:hover{
+    color: #034AA9;
+}
+
+main {
+    padding: 20px;
+}
+
+.produtos {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.produto {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 30%;
+    margin: 10px;
+}
+
+.produto img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #034AA9;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}

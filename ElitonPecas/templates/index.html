@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+<h1>Bem-vindo ao Meu Site</h1>
+<p>Esta é a página inicial.</p>
+
+<div class="produtos">
+    <div class="produto">
+        <img src="{{ url_for('static', filename='images/produto1.jpg') }}" alt="Produto 1">
+        <h2>Produto 1</h2>
+        <p>Descrição breve do Produto 1.</p>
+    </div>
+    <div class="produto">
+        <img src="{{ url_for('static', filename='images/produto2.jpg') }}" alt="Produto 2">
+        <h2>Produto 2</h2>
+        <p>Descrição breve do Produto 2.</p>
+    </div>
+    <div class="produto">
+        <img src="{{ url_for('static', filename='images/produto3.jpg') }}" alt="Produto 3">
+        <h2>Produto 3</h2>
+        <p>Descrição breve do Produto 3.</p>
+    </div>
+</div>
+{% endblock %}
