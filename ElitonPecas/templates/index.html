@@ -3,24 +3,20 @@
 {% block title %}Página Inicial{% endblock %}
 
 {% block content %}
-<h1>Bem-vindo ao Meu Site</h1>
-<p>Esta é a página inicial.</p>
-
-<div class="produtos">
-    <div class="produto">
-        <img src="{{ url_for('static', filename='images/produto1.jpg') }}" alt="Produto 1">
-        <h2>Produto 1</h2>
-        <p>Descrição breve do Produto 1.</p>
+<h1>Novidades</h1>
+<p>Para conferir nosso catálogo completo entre em <a class="clicavel" href="{{ url_for('contato') }}">contato</a></p> 
+{% if produtos %}
+    <div class="produtos">
+        {% for produto in produtos %}
+            <div class="produto">
+                <img src="{{ url_for('static', filename='images/' + produto[2] + '.jpg') }}" alt="Produto 1">
+                <div class="produto-info">
+                    <h2>{{ produto[0] }}</h2>
+                    <p>{{ produto[1] }}</p>
+                    <button>Informações</button>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-    <div class="produto">
-        <img src="{{ url_for('static', filename='images/produto2.jpg') }}" alt="Produto 2">
-        <h2>Produto 2</h2>
-        <p>Descrição breve do Produto 2.</p>
-    </div>
-    <div class="produto">
-        <img src="{{ url_for('static', filename='images/produto3.jpg') }}" alt="Produto 3">
-        <h2>Produto 3</h2>
-        <p>Descrição breve do Produto 3.</p>
-    </div>
-</div>
+{% endif %}
 {% endblock %}

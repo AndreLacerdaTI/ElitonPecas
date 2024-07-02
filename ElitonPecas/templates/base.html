@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %} - Meu Site</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/icon.ico') }}" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,10 +13,18 @@
 </head>
 <body>
     <header>
+        <div class="logo-name">
+            <img class="logo" src="{{ url_for('static', filename='images/Logo_azul.png') }}">
+            <h1>Eliton Peças</h1>
+        </div>
         <nav>
+            <!--
             <ul>
-                <li><img src="{{ url_for('static', filename='images/logo.png') }}">
+                <li><h1>Eliton</h1></li>
+                <li><img src="{{ url_for('static', filename='images/Logo_azul.png') }}"></li>
+                <li><h1>Peças</h1></li>
             </ul>
+            -->
             <ul>
                 <li class="{% if request.endpoint == 'index' %}active{% endif %}">
                     <a href="{{ url_for('index') }}">Página Inicial</a>

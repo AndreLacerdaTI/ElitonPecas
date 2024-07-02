@@ -4,7 +4,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    produtos = []
+    produto = ['Ravok Aro 29','27 Marchas','produto1']
+    produtos.append(produto)
+    produto = ['Bike Aro 26','27 Marchas','produto2']
+    produtos.append(produto)
+    produto = ['Bike Aro 16','Com rodinhas','produto3']
+    produtos.append(produto)
+    print(produtos)
+    return render_template('index.html', produtos=produtos)
 
 @app.route('/sobre')
 def sobre():
