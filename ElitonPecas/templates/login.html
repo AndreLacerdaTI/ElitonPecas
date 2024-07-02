@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Fazer login{% endblock %}
+
+{% block content %}
+<div class="login">
+    <h1>Fazer Login</h1>
+    <form class="login" action="/login" method="POST">
+        <label for="user">Usuário</label>
+        <input type="text" id="user" name="user" required>
+        <label for="passwd">Senha</label>
+        <input type="password" id="passwd" name="passwd" required>
+        <button>Entrar</button>
+    </form>
+</div>
+{% endblock %}

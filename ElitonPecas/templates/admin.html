@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Administrador{% endblock %}
+
+{% block content %}
+{% if adicionar %}
+    <div class="adicionar">
+        <div class="admin">
+            <form class="form-admin" method="post" action="{{ url_for('adicionar_produto') }}" enctype="multipart/form-data">
+                <h1>Adicionar produto</h1>
+                <label for="titulo">Titulo</label>
+                <input type="text" id="titulo" name="titulo" required>
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" name="descricao" required>
+                <label for="imagem">Imagem</label>
+                <input type="file" name="imagem" id="imagem" required><br><br>
+                <button>Salvar</button>
+                <a class="cancelar" href="{{ url_for('admin') }}">Cancelar</a>
+            </form>
+        </div>
+    </div>
+{% elif editar %}
+    <div class="adicionar">
+        <div class="admin">
+            <form class="form-admin" method="post" action="{{ url_for('adicionar_produto') }}" enctype="multipart/form-data">
+                <h1>Editar produto</h1>
+                <label for="titulo">Titulo</label>
+                <input type="text" id="titulo" name="titulo" required>
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" name="descricao" required>
+                <label for="imagem">Imagem</label>
+                <input type="file" name="imagem" id="imagem" required><br><br>
+                <button>Salvar</button>
+                <a class="cancelar" href="{{ url_for('admin') }}">Cancelar</a>
+            </form>
+        </div>
+    </div>
+{% else %}
+    <div class="admin">
+        <form class="form-admin" method="post" action="{{ url_for('form_admin') }}">
+            {% if current_user %}
+                <h1>Bem vindo {{ current_user.id }}</h1>
+            {% endif %}
+            <button type="submit" name="adicionar">Adicionar produto</button>
+            <button type="submit" name="editar">Editar produto</button>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </form>
+    </div>
+{% endif %}
+{% endblock %}

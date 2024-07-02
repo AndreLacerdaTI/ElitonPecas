@@ -3,9 +3,10 @@
 {% block title %}Contato{% endblock %}
 
 {% block content %}
-<h1>Contatos</h1>
-<p>Entre em contato através das nossas redes sociais ou telefone</p>
+
 <div class="contatos">
+    <h1 class="titulo">Contatos</h1>
+    <p class="sub-titulo">Entre em contato através das nossas redes sociais, telefone fixo ou e-mail</p>
     <a class="clicavel" href="https://wa.me/553798571293" target="_blank">
         <button class="redes-sociais">
             <img src="{{ url_for('static', filename='images/whatsapp.png') }}" alt="WhatsApp">
@@ -14,10 +15,19 @@
     </a>
     <a class="clicavel" href="https://www.instagram.com/eliton_pecas/" target="_blank">
         <button class="redes-sociais-i">
-            <img src="{{ url_for('static', filename='images/instagram.png') }}" alt="Instagram">
+            <img src="{{ url_for('static', filename='images/instagram_b.png') }}" alt="Instagram">
             <h1>Instagram</h1>
         </button>
     </a>
-    <a class="clicavel"><br><br><img src="{{ url_for('static', filename='images/telefone.png') }}" alt="Telefone">&nbsp;&nbsp;&nbsp;<h1>(37) 3333-2008</h1></a>
+    <div>
+        <img src="{{ url_for('static', filename='images/telefone.png') }}" alt="Telefone">
+        <h1>(37) 3333-2008</h1>
+    </div>
+    <div>
+        <img src="{{ url_for('static', filename='images/email.png') }}" alt="Telefone">
+        <h1>elitonbike@hotmail.com</h1>
+    </div>
 </div>
+<br>
+<br>
 {% endblock %}
