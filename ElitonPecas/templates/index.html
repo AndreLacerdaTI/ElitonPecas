@@ -4,9 +4,26 @@
 
 {% block content %}
 
+{% if detalhes %}
+    <div class="background">
+        <div class="detalhes-produto">
+            <h1>{{ detalhes[1] }}</h1>
+            <div class="detalhes-layout">
+                <a class="fechar"  href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/icone_fechar.png') }}" alt="Produto 1"></a>
+                <img class="imagem-detalhes" src="{{ url_for('static', filename='produtos/' + detalhes[3]) }}" alt="Produto 1">
+                <section>
+                    <h2>{{ detalhes[1] }}</h2>
+                    <h2>{{ detalhes[2] }}</h2>
+                    <p>Detalhe</p>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+
 {% if produtos %}
     <h1>Novidades</h1>
-    <p>Para conferir nosso catálogo completo entre em <a class="clicavel" href="{{ url_for('contato') }}">contato.</a></p>
     <div class="produtos">
         {% for produto in produtos %}
             <div class="produto">
@@ -14,12 +31,16 @@
                 <div class="produto-info">
                     <h2>{{ produto[1] }}</h2>
                     <p>{{ produto[2] }}</p>
-                    
+                    <form method="post" action="{{ url_for('detalhe_produto') }}">
+                        <input class="invisivel" type="text" name="id" value="{{ produto[0] }}">
+                        <button>Ver detalhes</button>
+                    </form>
                     <a href="https://web.whatsapp.com/send/?l=pt_BR&phone=553798571293&text=Produto: {{ produto[0] }}-{{ produto[1] }}-{{ produto[2] }}" target="_blank">Falar com vendedor</a>
                 </div>
             </div>
         {% endfor %}
     </div>
+    <p>Para conferir nosso catálogo completo entre em <a class="clicavel" href="{{ url_for('contato') }}">contato.</a></p>
 {% else %}
     <h1>Horario de funcionamento</h1>
     <p>Segunda à Sexta - 08h00 às 18h00</p>

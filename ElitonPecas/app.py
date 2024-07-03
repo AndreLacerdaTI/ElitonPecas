@@ -43,6 +43,18 @@ def contato():
 def administrador():
     return render_template('login.html')
 
+@app.route('/detalhe_produto', methods=['GET', 'POST'])
+def detalhe_produto():
+    id = request.form['id']
+    print(id)
+    produtos = importar_detalhes_produtos()
+    for detalhe in produtos:
+        print(detalhe[0])
+        if detalhe[0]==int(id):
+            detalhes = detalhe
+            return render_template('index.html', detalhes=detalhes)
+    return render_template('index.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -76,6 +88,9 @@ def adicionar_produto():
     if request.method == 'POST':
         if 'cancelar' in request.form:
             return render_template('admin.html')
+        
+    # (titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem)
+
     titulo = request.form['titulo']
     descricao = request.form['descricao']
     imagem = request.files['imagem']

@@ -43,7 +43,34 @@
             {% block content %}{% endblock %}
         </main>
         <footer>
-            <p>© 2024 Eliton Peças. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <div class="f-links">
+                    <h2>Ir para</h2>
+                    <a href="{{ url_for('index') }}" title='Ir para Página Inicial'>Página Inicial</a>
+                    <a href="{{ url_for('sobre') }}" title="Ir para página Sobre Nós">Sobre Nós</a>
+                    <a href="{{ url_for('contato') }}" title="Ir para página Contato">Contato</a>
+                </div>
+            </div>
+            <div class="footer-info">
+                <img src="{{ url_for('static', filename='images/Logo_branca.png') }}">
+                <h1>Eliton Peças</h1>
+                <p>Rua Luís Alves 407 - Carmópolis de Minas - MG - 35534-000</p>
+                <p>Telefone: (37) 3333-2008</p>
+                <br>
+                <br>
+                <p>© 2024 Eliton Peças. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-links">
+                <h2>Redes Sociais</h2>
+                <div class="f-socials">
+                    <a class="clicavel" href="https://wa.me/553798571293" target="_blank">
+                        <img src="{{ url_for('static', filename='images/whatsapp.png') }}" alt="WhatsApp">
+                    </a>
+                    <a class="clicavel" href="https://www.instagram.com/eliton_pecas/" target="_blank">
+                        <img src="{{ url_for('static', filename='images/instagram_b.png') }}" alt="WhatsApp">
+                    </a>
+                </div>
+            </div>
         </footer>
     </div>
     <div>

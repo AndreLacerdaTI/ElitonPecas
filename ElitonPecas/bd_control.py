@@ -1,21 +1,30 @@
 import sqlite3
 
-
-def importar_produtos():
+def importar_detalhes_produtos():
     conn = sqlite3.connect('bd.db')
     cur = conn.cursor()
-    cur.execute("SELECT id, titulo, descricao, imagem FROM produtos")
+    cur.execute("SELECT id, titulo, tamanho, imagem FROM produtos")
     rows = cur.fetchall()
     #print(rows)
     return rows
 
-def salvar(titulo, descricao, imagem):
+
+def importar_produtos():
+    conn = sqlite3.connect('bd.db')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM produtos")
+    rows = cur.fetchall()
+    #print(rows)
+    return rows
+
+
+def salvar(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem):
     conn = sqlite3.connect('bd.db')
     with conn:
-        sql = '''INSERT INTO produtos (titulo, descricao, imagem)
+        sql = '''INSERT INTO produtos (titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem)
                     VALUES (?, ?, ?)'''
         cur = conn.cursor()
-        cur.execute(sql, (titulo, descricao, imagem))
+        cur.execute(sql, (titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem))
         conn.commit()
     return True
 
@@ -31,7 +40,12 @@ def create_table(conn):
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         titulo TEXT NOT NULL,
         descricao TEXT NOT NULL,
-        imagem BLOB
+        tamanho REAL,
+        marcha TEXT,
+        freio TEXT,
+        cor_primaria TEXT,
+        cor_secundaria TEXT,
+        imagem TEXT
     );
     '''
     try:
