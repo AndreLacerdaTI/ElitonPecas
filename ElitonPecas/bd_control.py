@@ -6,7 +6,7 @@ def importar_produtos():
     cur = conn.cursor()
     cur.execute("SELECT id, titulo, descricao, imagem FROM produtos")
     rows = cur.fetchall()
-    print(rows)
+    #print(rows)
     return rows
 
 def salvar(titulo, descricao, imagem):

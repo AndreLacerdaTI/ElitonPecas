@@ -29,18 +29,6 @@ def load_user(user_id):
 @app.route('/')
 def index():
     produtos = importar_produtos()
-    
-    
-    """
-    produtos = []
-    produto = ['Ravok Aro 29','27 Marchas','produto1']
-    produtos.append(produto)
-    produto = ['Bike Aro 26','27 Marchas','produto2']
-    produtos.append(produto)
-    produto = ['Bike Aro 16','Com rodinhas','produto3']
-    produtos.append(produto)
-    """
-    
     return render_template('index.html', produtos=produtos)
 
 @app.route('/sobre')
@@ -111,3 +99,4 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    #app.run(host='192.168.2.117')

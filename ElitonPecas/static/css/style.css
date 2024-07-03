@@ -23,7 +23,10 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1;
-    height: 100vh;
+    height: 100%;
+}
+main {
+    height: 100rem;
 }
 
 body h1 {
@@ -137,7 +140,7 @@ nav ul li a:hover{
     padding: 10px;
 }
 
-.produto-info button {
+.produto-info a {
     background-color: transparent;
     border: 2px solid #ffffff50;
     border-radius: 20px;
@@ -146,9 +149,10 @@ nav ul li a:hover{
     font-size: 15px;
     font-weight: bold;
     transition: 0.2s;
+    text-decoration: none;
 }
 
-.produto-info button:hover {
+.produto-info a:hover {
     background-color: #ffffff30;
     border: 2px solid #fff;
 }
@@ -161,19 +165,43 @@ nav ul li a:hover{
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color: #034AA9;
+
+    background-color: #3B3B3B;
+    
     color: #fff;
     margin: 0;
-    padding: 20px;
 }
+
+.container .sobre {
+    position: absolute;
+    z-index: 1;
+    width: 40%;
+    margin-left: 50%;
+    padding: 50px;
+    /*
+    border: 2px solid #fff;
+    border-radius: 30px;
+    background-color: #ffffff30;
+    */
+}
+
+/*
 .container img {
     width: 30%;
     margin: 20px;
     border: 15px solid #fff;
     border-radius: 5px;
     box-shadow: 1px 1px 18px 10px #14141458;
+}
+*/
+.fundo {
+    z-index: 0;
+    position:relative;
+    width: 50%;
+    height: 50%;
+    opacity: 0.2;
+    margin: 0;
+    padding: 0;
 }
 
 /* Contatos */

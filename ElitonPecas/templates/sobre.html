@@ -4,12 +4,14 @@
 
 {% block content %}
 <div class="container">
-    <h1>Sobre Nós</h1>
-    <p>Fundada em 1994, a nossa mecânica de bicicletas tem se dedicado a oferecer serviços e produtos de alta qualidade para ciclistas de todas as idades e níveis de experiência. Com mais de duas décadas de expertise no setor, estabelecemos uma reputação sólida baseada em confiança, inovação e excelência.</p>
+    <img class="fundo" src="{{ url_for('static', filename='images/sobre.jpg') }}" alt="Fachada loja">
+    <div class="sobre">
+        <h1>Sobre Nós</h1>
+        <p>Fundada em 1994, a nossa mecânica de bicicletas tem se dedicado a oferecer serviços e produtos de alta qualidade para ciclistas de todas as idades e níveis de experiência. Com mais de duas décadas de expertise no setor, estabelecemos uma reputação sólida baseada em confiança, inovação e excelência.</p>
 
-    <p>Desde a nossa criação, buscamos constantemente aprimorar nossos processos e expandir nosso portfólio de serviços, acompanhando as tendências do mercado e as necessidades dos ciclistas. Nossa equipe é composta por profissionais altamente qualificados e apaixonados por bicicletas, que trabalham incansavelmente para garantir a satisfação de nossos clientes.</p>
-        
-    <p>Nossa missão é proporcionar soluções que melhorem a experiência de andar de bicicleta e contribuam para o desenvolvimento sustentável da mobilidade urbana. Valorizamos a ética, a transparência e o respeito em todas as nossas relações, sejam elas com clientes, colaboradores, fornecedores ou a comunidade em geral.</p>
-    <img src="{{ url_for('static', filename='images/sobre.jpg') }}" alt="Fachada loja">
+        <p>Desde a nossa criação, buscamos constantemente aprimorar nossos processos e expandir nosso portfólio de serviços, acompanhando as tendências do mercado e as necessidades dos ciclistas. Nossa equipe é composta por profissionais altamente qualificados e apaixonados por bicicletas, que trabalham incansavelmente para garantir a satisfação de nossos clientes.</p>
+            
+        <p>Nossa missão é proporcionar soluções que melhorem a experiência de andar de bicicleta e contribuam para o desenvolvimento sustentável da mobilidade urbana. Valorizamos a ética, a transparência e o respeito em todas as nossas relações, sejam elas com clientes, colaboradores, fornecedores ou a comunidade em geral.</p>
+    </div>
 </div>
 {% endblock %}
