@@ -10,12 +10,31 @@
             <h1>{{ detalhes[1] }}</h1>
             <div class="detalhes-layout">
                 <a class="fechar"  href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/icone_fechar.png') }}" alt="Produto 1"></a>
-                <img class="imagem-detalhes" src="{{ url_for('static', filename='produtos/' + detalhes[3]) }}" alt="Produto 1">
-                <section>
-                    <h2>{{ detalhes[1] }}</h2>
-                    <h2>{{ detalhes[2] }}</h2>
-                    <p>Detalhe</p>
-                </section>
+                <img class="imagem-detalhes" src="{{ url_for('static', filename='produtos/' + detalhes[8]) }}" alt="Produto 1">
+                <table>
+                    <tr>
+                        <th>Detalhes</th><th>{{ detalhes[2] }}</th>
+                    </tr>
+                    <tr>
+                        <th>Tamanho</th>
+                        <th>{{ detalhes[3] }}</th>
+                    </tr>
+                    <tr>
+                        <td>Marcha</td>
+                        <td>{{ detalhes[4] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Freio</td>
+                        <td>{{ detalhes[5] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Cores</td>
+                        <td><button style="background-color: {{ detalhes[6] }}; width: 30px; height: 30px;" disabled></button>
+                            <button style="background-color: {{ detalhes[7] }}; width: 30px; height: 30px;" disabled></button></td>
+                    </tr>
+                    
+                    
+                </table>
             </div>
         </div>
     </div>

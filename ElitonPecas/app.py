@@ -93,6 +93,11 @@ def adicionar_produto():
 
     titulo = request.form['titulo']
     descricao = request.form['descricao']
+    tamanho = request.form['tamanho']
+    marcha = request.form['marcha']
+    freio = request.form['freio']
+    cor_primaria = request.form['cor_primaria']
+    cor_secundaria = request.form['cor_secundaria']
     imagem = request.files['imagem']
 
     if imagem:
@@ -102,9 +107,10 @@ def adicionar_produto():
                 image_blob = file.read()
         """
         imagem = imagem.filename
-    print(titulo, descricao, imagem)
-    salvar(titulo, descricao, imagem)
-    return render_template('admin.html',adicionar=True)
+    print(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem)
+    salvar(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem)
+    flash('Esta é uma mensagem flash!')
+    return render_template('admin.html')
 
 @app.route('/logout',methods=['GET', 'POST'])
 @login_required

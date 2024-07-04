@@ -196,6 +196,14 @@ nav ul li a:hover{
 
 .imagem-detalhes {
     width: 40%;
+    height: auto;
+}
+.detalhes-layout section {
+    display: flex;
+}
+
+.detalhes-layout section h2 {
+    margin-top: 8px;
 }
 
 .fechar {
@@ -451,7 +459,8 @@ footer {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
+    height: auto;
+    padding-bottom: 100px;
     align-items: center;
     text-align: center;
     justify-content: center;
@@ -460,7 +469,7 @@ footer {
     display: flex;
     flex-direction: column;
     width: 40%;
-    height: 80%;
+    height: auto;
     align-items: center;
     text-align: center;
     padding: 20px;
@@ -473,17 +482,84 @@ footer {
     width: 70%;
     height: 30px;
     padding: 5px 15px;
-    background-color: #e0e0e0;
-    border: 0;
+    border: 1px solid #333;
     border-radius: 20px;
     list-style: none;
     text-align: center;
 }
 .form-admin input:focus {
-    background-color: #99c3fa;
+    border: 2px solid #005fda;
     outline: none;
 }
 
+.form-admin select {
+    width: 40%;
+    height: 40px;
+    padding: 5px 15px;
+    background-color: #e0e0e0;
+    list-style: none;
+    text-align: center;
+    outline: none;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url(../images/select-seta.png) no-repeat center right #FFF;
+
+    border: 1px solid #333;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+.form-admin select:focus {
+    border: 2px solid #005fda;
+
+}
+
+h3 {
+    margin: 0;
+    color: #3B3B3B;
+}
+
+.input-file {
+    padding: 20px 10px;
+    width: 200px;
+    color: #3B3B3B;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+    border: 1px dashed #3B3B3B;
+    border-radius: 30px;
+}
+
+.input-file img{
+    width: 30px;
+}
+
+
+.form-admin input[type="file"]{
+    background-color: #005fda;
+    display: none;
+}
+
+.input-cores {
+    display: flex;
+    height: auto;
+    gap: 40px;
+}
+.input-cores div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-cores div input {
+    height: 50px;
+    width: 70px;
+    background-color: transparent;
+    border: 0;
+}
 
 .form-admin  button {
     width: 80%;
@@ -532,8 +608,8 @@ footer {
     position: absolute;
     z-index: 0;
     width: 100%;
-    height: 100%;
-    background-color: #ffffff;
+    height: auto;
+    background-color: #fff;
     align-items: center;
     text-align: center;
 }

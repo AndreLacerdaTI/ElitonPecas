@@ -12,7 +12,45 @@
                 <input type="text" id="titulo" name="titulo" required>
                 <label for="descricao">Descrição</label>
                 <input type="text" id="descricao" name="descricao" required>
-                <label for="imagem">Imagem</label>
+                <select id="tamanho" name="tamanho">
+                    <option value="12">Aro 12</option>
+                    <option value="14">Aro 14</option>
+                    <option value="16">Aro 16</option>
+                    <option value="20">Aro 20</option>
+                    <option value="24">Aro 24</option>
+                    <option value="26">Aro 26</option>
+                    <option value="29">Aro 29</option>
+                </select>
+                <label for="marcha">Marcha</label>
+                <select id="marcha" name="marcha">
+                    <option value="Sem marcha">Sem Marcha</option>
+                    <option value="18">18 velocidades</option>
+                    <option value="21">21 velocidades</option>
+                    <option value="24">24 velocidades</option>
+                    <option value="27">27 velocidades</option>
+                </select>
+                <label for="freio">Tipo de freio</label>
+                <select id="freio" name="freio">
+                    <option value="Disco Hidráulico" selected>Disco Hidráulico</option>
+                    <option value="Disco Mecânico">Disco Mecânico</option>
+                    <option value="V-Brake">V-Brake</option>
+                    <option value="Cantilever">Cantilever</option>
+                    <option value="Ferradura">Ferradura</option>
+                </select>
+                <div class="input-cores">
+                    <div>
+                        <label for="cor_primaria">Selecione a cor primária:</label>
+                        <input type="color" id="cor_primaria" name="cor_primaria" value="#ff0000">
+                    </div>
+                    <div>
+                        <label for="cor_secundaria">Selecione a cor secundária:</label>
+                        <input type="color" id="cor_secundaria" name="cor_secundaria" value="#ffffff">
+                    </div>
+                </div>
+                <h3>Imagem</h3>
+                <label class="input-file" for="imagem">
+                    <img src="{{ url_for('static', filename='images/imagem.png') }}" alt="Telefone">
+                </label>
                 <input type="file" name="imagem" id="imagem" required><br><br>
                 <button>Salvar</button>
                 <a class="cancelar" href="{{ url_for('admin') }}">Cancelar</a>
@@ -28,8 +66,49 @@
                 <input type="text" id="titulo" name="titulo" required>
                 <label for="descricao">Descrição</label>
                 <input type="text" id="descricao" name="descricao" required>
-                <label for="imagem">Imagem</label>
+                <label for="tamanho">Tamanho</label>
+                <select id="tamanho" name="tamanho">
+                    <option value="12">Aro 12</option>
+                    <option value="14">Aro 14</option>
+                    <option value="16">Aro 16</option>
+                    <option value="20">Aro 20</option>
+                    <option value="24">Aro 24</option>
+                    <option value="26">Aro 26</option>
+                    <option value="29">Aro 29</option>
+                </select>
+                <label for="marcha">Marcha</label>
+                <select id="marcha" name="marcha">
+                    <option value="Sem marcha">Sem Marcha</option>
+                    <option value="18">18 velocidades</option>
+                    <option value="21">21 velocidades</option>
+                    <option value="24">24 velocidades</option>
+                    <option value="27">27 velocidades</option>
+                </select>
+                <label for="freio">Tipo de freio</label>
+                <select id="freio" name="freio">
+                    <option value="Disco Hidráulico" selected>Disco Hidráulico</option>
+                    <option value="Disco Mecânico">Disco Mecânico</option>
+                    <option value="V-Brake">V-Brake</option>
+                    <option value="Cantilever">Cantilever</option>
+                    <option value="Ferradura">Ferradura</option>
+                </select>
+                
+                <div class="input-cores">
+                    <div>
+                        <label for="cor_primaria">Selecione a cor primária:</label>
+                        <input type="color" id="cor_primaria" name="cor_primaria" value="#ff0000">
+                    </div>
+                    <div>
+                        <label for="cor_secundaria">Selecione a cor secundária:</label>
+                        <input type="color" id="cor_secundaria" name="cor_secundaria" value="#ffffff">
+                    </div>
+                </div>
+                <h3>Imagem</h3>
+                <label class="input-file" for="imagem">
+                    <img src="{{ url_for('static', filename='images/imagem.png') }}" alt="Telefone">
+                </label>
                 <input type="file" name="imagem" id="imagem" required><br><br>
+                
                 <button>Salvar</button>
                 <a class="cancelar" href="{{ url_for('admin') }}">Cancelar</a>
             </form>

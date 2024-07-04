@@ -3,7 +3,7 @@ import sqlite3
 def importar_detalhes_produtos():
     conn = sqlite3.connect('bd.db')
     cur = conn.cursor()
-    cur.execute("SELECT id, titulo, tamanho, imagem FROM produtos")
+    cur.execute("SELECT * FROM produtos")
     rows = cur.fetchall()
     #print(rows)
     return rows
@@ -12,7 +12,7 @@ def importar_detalhes_produtos():
 def importar_produtos():
     conn = sqlite3.connect('bd.db')
     cur = conn.cursor()
-    cur.execute("SELECT * FROM produtos")
+    cur.execute("SELECT id, titulo, tamanho, imagem FROM produtos")
     rows = cur.fetchall()
     #print(rows)
     return rows
@@ -22,7 +22,7 @@ def salvar(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundar
     conn = sqlite3.connect('bd.db')
     with conn:
         sql = '''INSERT INTO produtos (titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem)
-                    VALUES (?, ?, ?)'''
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)'''
         cur = conn.cursor()
         cur.execute(sql, (titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem))
         conn.commit()
@@ -64,5 +64,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 """
