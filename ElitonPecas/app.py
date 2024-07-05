@@ -68,6 +68,12 @@ def login():
             flash('Login Inválido. Tente novamente.')
     return render_template('login.html')
 
+@app.route('/teste_mensagem',  methods=['GET', 'POST'])
+def teste_mensagem():
+    flash('alerta')
+    flash('Mensagem teste 1')
+    flash('Mensagem teste 2')
+    return render_template('admin.html')
 @app.route('/admin')
 @login_required
 def admin():
@@ -78,8 +84,13 @@ def form_admin():
     if request.method == 'POST':
         if 'adicionar' in request.form:
             return render_template('admin.html',adicionar=True)
+        elif 'selecionar_editar' in request.form:
+            produtos = importar_detalhes_produtos()
+            return render_template('admin.html',selecionar_editar=True, produtos=produtos)
         elif 'editar' in request.form:
-            return render_template('admin.html',editar=True)
+            id = request.form['id']
+            produto = select_produtos(id)
+            return render_template('admin.html',editar=True, produto=produto)
         
 
 
@@ -108,8 +119,10 @@ def adicionar_produto():
         """
         imagem = imagem.filename
     print(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem)
-    salvar(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem)
-    flash('Esta é uma mensagem flash!')
+    retorno = salvar(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem)
+    flash(retorno)
+    flash('Produto cadastrado com sucesso!')
+    flash(titulo + ' já está disponível no catálogo.')
     return render_template('admin.html')
 
 @app.route('/logout',methods=['GET', 'POST'])

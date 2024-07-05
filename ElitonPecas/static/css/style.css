@@ -98,6 +98,39 @@ nav ul li a:hover{
     color: #034AA9;
 }
 
+.alert-info {
+    width: 30%;
+    height: 300px;
+    background-color: #FFF;
+    color: #3B3B3B;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    border-radius: 20px;
+    box-shadow: 1px 1px 18px 10px #14141458;
+}
+
+
+.alert-info a{
+    color: #fff;
+    position: relative;
+    background-color: #3B3B3B;
+    padding: 10px 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+    transition: 0.2s;
+}
+
+.alert-info a:hover{
+    background-color: #005fda;
+}
+
+.img-tipo-alerta {
+    width: 50px;
+
+}
+
 /* Home */
 .produtos {
     display: flex;
@@ -111,15 +144,15 @@ nav ul li a:hover{
     border-radius: 10px;
     overflow: hidden;
     width: 30%;
-    height: auto;
+    height: 300px;
     margin: 10px;
     text-align: center;
     align-items: center;
 }
 
 .produto img {
-    width: 80%;
-    height: auto;
+    width: auto;
+    height: 100%;
 
     border-radius: 10px;
 }
@@ -141,6 +174,9 @@ nav ul li a:hover{
     padding: 10px;
 }
 
+.produto-info h2,.produto-info p {
+    margin: 3px;
+}
 .produto-info a, .produto-info form button {
     background-color: transparent;
     border: 2px solid #ffffff50;
@@ -214,6 +250,18 @@ nav ul li a:hover{
 }
 .fechar img{
     width: 40px;
+}
+
+table {
+    width: 40%;
+}
+
+
+td {
+    margin: 0;
+    width: 50%;
+    height: 40px;
+    border: 1px solid #3B3B3B;
 }
 
 .invisivel {display: none;}
@@ -324,10 +372,13 @@ footer {
     background-color: #3B3B3B;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
     position: inherit;  
     width: 100%;
     bottom: 0;
+}
+
+.footers {
+    padding: 10px 0;
     display: flex;
     justify-content: space-around;
 }
@@ -614,8 +665,54 @@ h3 {
     text-align: center;
 }
 
+.adicionar table {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
 
+.adicionar table td {
+    width: max-content;
+    padding: 10px 30px;
+    margin: 0;
+}
 
+.adicionar table td button{
+    border-radius: 20px;
+    background-color: transparent;
+    border: 0;
+    transition: 0.2s;
+    width: 100%;
+}
+.adicionar table td button:hover{
+    scale: 1.1;
+}
+
+.adicionar table td button img {
+    width: 40px;
+    background-color: transparent;
+    border: 0;
+}
+
+.adicionar table tr:hover {
+    border: 1px solid #005fda;
+    background-color: #005fda20;
+}
+.adicionar table td:hover {
+    border: 1px solid #005fda;
+    background-color: #005fda20;
+}
+
+#imagem-editar{
+    width: 100%;
+    height: 400px;
+}
+#imagem-editar img{
+    width: auto;
+    height: 100%;
+}
 /* Estilo para dispositivos móveis */
 @media screen and (max-width: 600px) {
     header {
@@ -629,6 +726,26 @@ h3 {
         flex-direction: column;
         width: 100%;
     }
+
+    .detalhes-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .imagem-detalhes {
+        width: 80%;
+        height: auto;
+    }
+
+    table {
+        margin-top: 10px;
+        width: 90%;
+    }
+    td {
+        height: 40px;
+    }
+
     .container {
         display: block;
         background-color: #3B3B3B;
@@ -659,8 +776,13 @@ h3 {
     .form-admin {
         width: 80%;
     }
-    footer {
+    .footers {
         flex-direction: column;
+    }
+    .footer-info {
+        margin-top: 30px;
+        text-align: center;
+        height: auto;
     }
     .f-socials {
         justify-content: center;

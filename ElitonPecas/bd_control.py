@@ -17,6 +17,25 @@ def importar_produtos():
     #print(rows)
     return rows
 
+def select_produtos(id):
+    conn = sqlite3.connect('bd.db')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM produtos WHERE id = %s" % id)
+    rows = cur.fetchall()
+    #print(rows)
+    return rows[0]
+
+def salvar_alteracao(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem):
+    conn = sqlite3.connect('bd.db')
+    with conn:
+        sql = '''UPDATE produtos  SET titulo = ?, descricao = ?, tamanho = ?, marcha = ?, freio = ?, cor_primaria = ?, cor_secundaria = ?, imagem  = ?);'''
+        cur = conn.cursor()
+        cur.execute(sql, (titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem))
+        try:
+            conn.commit()
+            return 'sucesso'
+        except:
+            return 'erro'
 
 def salvar(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem):
     conn = sqlite3.connect('bd.db')
@@ -25,8 +44,11 @@ def salvar(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundar
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)'''
         cur = conn.cursor()
         cur.execute(sql, (titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem))
-        conn.commit()
-    return True
+        try:
+            conn.commit()
+            return 'sucesso'
+        except:
+            return 'erro'
 
 """
 
@@ -40,7 +62,7 @@ def create_table(conn):
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         titulo TEXT NOT NULL,
         descricao TEXT NOT NULL,
-        tamanho REAL,
+        tamanho INTEGER,
         marcha TEXT,
         freio TEXT,
         cor_primaria TEXT,

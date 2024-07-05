@@ -14,9 +14,26 @@
 <body>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
-          <div class="alert alert-info" role="alert">
-            {{ messages[0] }}
-          </div>
+        <div class="background" id="background">
+            <div class="alert-info" role="alert">
+                <h1>
+                    {% if messages[0]=='erro' %}
+                        <img class="img-tipo-alerta" src="{{ url_for('static', filename='images/erro.png') }}">
+                    {% elif messages[0]=='alerta' %}
+                        <img class="img-tipo-alerta" src="{{ url_for('static', filename='images/alerta.png') }}">
+                    {% elif messages[0]=='informacao' %}
+                        <img class="img-tipo-alerta" src="{{ url_for('static', filename='images/informacao.png') }}">
+                    {% elif messages[0]=='sucesso' %}
+                        <img class="img-tipo-alerta" src="{{ url_for('static', filename='images/sucesso.png') }}">
+                    {% endif %}
+                </h1>
+                <h1>{{ messages[1] }}</h1>
+                <h2>{{ messages[2] }}</h2>
+                <br>
+                <br>
+                <a onclick="closeFlash(this)">OK</a>
+            </div>
+        </div>
         {% endif %}
     {% endwith %}
     <div class="wrapper">
@@ -49,35 +66,38 @@
         <main>
             {% block content %}{% endblock %}
         </main>
+        
         <footer>
-            <div class="footer-links">
-                <div class="f-links">
-                    <h2>Ir para</h2>
-                    <a href="{{ url_for('index') }}" title='Ir para Página Inicial'>Página Inicial</a>
-                    <a href="{{ url_for('sobre') }}" title="Ir para página Sobre Nós">Sobre Nós</a>
-                    <a href="{{ url_for('contato') }}" title="Ir para página Contato">Contato</a>
+            <div class="footers">
+                <div class="footer-links">
+                    <div class="f-links">
+                        <h2>Ir para</h2>
+                        <a href="{{ url_for('index') }}" title='Ir para Página Inicial'>Página Inicial</a>
+                        <a href="{{ url_for('sobre') }}" title="Ir para página Sobre Nós">Sobre Nós</a>
+                        <a href="{{ url_for('contato') }}" title="Ir para página Contato">Contato</a>
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <img src="{{ url_for('static', filename='images/Logo_branca.png') }}">
+                    <h1>Eliton Peças</h1>
+                    <p>Rua Luís Alves 407 - Carmópolis de Minas - MG - 35534-000</p>
+                    <p>Telefone: (37) 3333-2008</p>
+                    <br>
+                    <br>
+                </div>
+                <div class="footer-links">
+                    <h2>Redes Sociais</h2>
+                    <div class="f-socials">
+                        <a class="clicavel" href="https://wa.me/553798571293" target="_blank">
+                            <img src="{{ url_for('static', filename='images/whatsapp.png') }}" alt="WhatsApp">
+                        </a>
+                        <a class="clicavel" href="https://www.instagram.com/eliton_pecas/" target="_blank">
+                            <img src="{{ url_for('static', filename='images/instagram_b.png') }}" alt="WhatsApp">
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-info">
-                <img src="{{ url_for('static', filename='images/Logo_branca.png') }}">
-                <h1>Eliton Peças</h1>
-                <p>Rua Luís Alves 407 - Carmópolis de Minas - MG - 35534-000</p>
-                <p>Telefone: (37) 3333-2008</p>
-                <br>
-                <br>
-                <p>© 2024 Eliton Peças. Todos os direitos reservados.</p>
-            </div>
-            <div class="footer-links">
-                <h2>Redes Sociais</h2>
-                <div class="f-socials">
-                    <a class="clicavel" href="https://wa.me/553798571293" target="_blank">
-                        <img src="{{ url_for('static', filename='images/whatsapp.png') }}" alt="WhatsApp">
-                    </a>
-                    <a class="clicavel" href="https://www.instagram.com/eliton_pecas/" target="_blank">
-                        <img src="{{ url_for('static', filename='images/instagram_b.png') }}" alt="WhatsApp">
-                    </a>
-                </div>
-            </div>
+            <p>© 2024 Eliton Peças. Todos os direitos reservados.</p>
         </footer>
     </div>
     <div>
@@ -101,6 +121,12 @@
         function topFunction() {
             document.body.scrollTop = 0; // Para Safari
             document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE e Opera
+        }
+    </script>
+    <script>
+        function closeFlash(element) {
+          element.parentElement.style.display = 'none';
+          document.getElementById('background').style.display = 'none';
         }
     </script>
 </body>

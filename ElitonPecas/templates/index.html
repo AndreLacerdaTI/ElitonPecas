@@ -13,15 +13,15 @@
                 <img class="imagem-detalhes" src="{{ url_for('static', filename='produtos/' + detalhes[8]) }}" alt="Produto 1">
                 <table>
                     <tr>
-                        <th>Detalhes</th><th>{{ detalhes[2] }}</th>
+                        <td>Descrição</td><td>{{ detalhes[2] }}</td>
                     </tr>
                     <tr>
-                        <th>Tamanho</th>
-                        <th>{{ detalhes[3] }}</th>
+                        <td>Tamanho</td>
+                        <td>{{ detalhes[3] }}</td>
                     </tr>
                     <tr>
                         <td>Marcha</td>
-                        <td>{{ detalhes[4] }}</td>
+                        <td>{{ detalhes[4] }} velocidades</td>
                     </tr>
                     <tr>
                         <td>Freio</td>
@@ -29,11 +29,11 @@
                     </tr>
                     <tr>
                         <td>Cores</td>
-                        <td><button style="background-color: {{ detalhes[6] }}; width: 30px; height: 30px;" disabled></button>
-                            <button style="background-color: {{ detalhes[7] }}; width: 30px; height: 30px;" disabled></button></td>
+                        <td>
+                            <button style="background-color: {{ detalhes[6] }}; width: 30px; height: 30px;" disabled></button>
+                            <button style="background-color: {{ detalhes[7] }}; width: 30px; height: 30px;" disabled></button>
+                        </td>
                     </tr>
-                    
-                    
                 </table>
             </div>
         </div>
@@ -43,13 +43,15 @@
 
 {% if produtos %}
     <h1>Novidades</h1>
+    <a class="fechar"  href="{{ url_for('teste_mensagem') }}"><img src="{{ url_for('static', filename='images/icone_fechar.png') }}" alt="Fechar"></a>
     <div class="produtos">
         {% for produto in produtos %}
             <div class="produto">
                 <img src="{{ url_for('static', filename='produtos/' + produto[3]) }}" alt="Produto 1">
                 <div class="produto-info">
-                    <h2>{{ produto[1] }}</h2>
-                    <p>{{ produto[2] }}</p>
+                    <h2>{{ produto[1] }} - Aro {{ produto[2] }}</h2>
+                    <p></p>
+                    <br>
                     <form method="post" action="{{ url_for('detalhe_produto') }}">
                         <input class="invisivel" type="text" name="id" value="{{ produto[0] }}">
                         <button>Ver detalhes</button>
