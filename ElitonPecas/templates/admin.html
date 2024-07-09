@@ -3,6 +3,20 @@
 {% block title %}Administrador{% endblock %}
 
 {% block content %}
+{% if confirmar %}
+    <div class="adicionar">
+        <div class="admin">
+            <form class="form-admin" method="post" action="{{ url_for('form_admin') }}">
+                <h1>Deseja realmente excluir o produto?</h1>
+                <h2>{{titulo}} - Aro {{tamanho}}</h2>
+                <input type="text" class="invisivel" name="id" value="{{ id }}">
+                <button type="submit" name="excluir">Sim</button>
+                <button class="cancelar" type="submit" name="cancelar">Não</button>
+            </form>
+        </div>
+    </div>
+{% endif %}
+
 {% if adicionar %}
     <div class="adicionar">
         <div class="admin">
@@ -59,12 +73,19 @@
     </div>
 {% elif selecionar_editar %}
     {% if produtos %}
+        <div class="navegacao">
+            <a class="clicavel" href="{{ url_for('index') }}"> Página inicial </a>
+            <p> > </p>
+            <a class="clicavel" href="{{ url_for('admin') }}"> Página de Administrador </a>
+            <p> > Selecionar produto para editar </p> <br><br><br>
+        </div>
         <div class="adicionar">
             <table>
                 <tr>
                     <th>ID</th>
                     <th>TITULO</th>
                     <th>DESCRIÇÃO</th>
+                    <th>TAMANHO</th>
                     <th>MARCHA</th>
                     <th>FREIO</th>
                     <th>COR 1</th>
@@ -77,6 +98,7 @@
                     <td>{{ produto[0] }}</td>
                     <td>{{ produto[1] }}</td>
                     <td>{{ produto[2] }}</td>
+                    <td>{{ produto[3] }}</td>
                     <td>{{ produto[4] }}</td>
                     <td>{{ produto[5] }}</td>
                     <td><button style="background-color: {{ produto[6] }}; width: 30px; height: 30px;" disabled></button></td>
@@ -87,6 +109,13 @@
                         <td><button type="submit" name="editar"><img src="{{ url_for('static', filename='images/editar.png') }}" alt="Editar"></button></td>
                         
                     </form>
+                    <form class="form-admin" method="post" action="{{ url_for('form_admin') }}">
+                        <input type="text" class="invisivel" name="id" value="{{ produto[0] }}">
+                        <input type="text" class="invisivel" name="titulo" value="{{ produto[1] }}">
+                        <input type="text" class="invisivel" name="tamanho" value="{{ produto[3] }}">
+                        <td><button type="submit" name="confirmar"><img src="{{ url_for('static', filename='images/excluir.png') }}" alt="Editar"></button></td>
+                        
+                    </form>
                 </tr>
                 {% endfor %}
             </table>
@@ -95,8 +124,9 @@
 {% elif editar %}
     <div class="adicionar">
         <div class="admin">
-            <form class="form-admin" method="post" action="{{ url_for('adicionar_produto') }}" enctype="multipart/form-data">
+            <form class="form-admin" method="post" action="{{ url_for('alterar_produto') }}" enctype="multipart/form-data">
                 <h1>Editar produto</h1>
+                <input class="invisivel" type="text " id="id" name="id" value="{{ produto[0] }}">
                 <label for="titulo">Titulo</label>
                 <input type="text" id="titulo" name="titulo" value="{{ produto[1] }}" required>
                 <label for="descricao">Descrição</label>
@@ -145,8 +175,8 @@
                 <label id="imagem-editar" class="input-file" for="imagem">
                     <img src="{{ url_for('static', filename='produtos/' + produto[8]) }}" alt="Telefone">
                 </label>
-                <input type="file" name="imagem" id="imagem" value="produto[8]"><br><br>
-                
+                <input type="file" name="imagem" id="imagem" value="{{ produto[8] }}"><br><br>
+                <input type="text"  name="imagem_antiga" id="imagem_antiga" value="{{ produto[8] }}"><br><br>
                 <button>Salvar</button>
                 <a class="cancelar" href="{{ url_for('admin') }}">Cancelar</a>
             </form>

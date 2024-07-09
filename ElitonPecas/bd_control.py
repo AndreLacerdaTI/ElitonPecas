@@ -25,17 +25,27 @@ def select_produtos(id):
     #print(rows)
     return rows[0]
 
-def salvar_alteracao(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem):
+def salvar_alteracao(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem, id_produto):
     conn = sqlite3.connect('bd.db')
     with conn:
-        sql = '''UPDATE produtos  SET titulo = ?, descricao = ?, tamanho = ?, marcha = ?, freio = ?, cor_primaria = ?, cor_secundaria = ?, imagem  = ?);'''
+        sql = '''UPDATE produtos SET titulo = ?, descricao = ?, tamanho = ?, marcha = ?, freio = ?, cor_primaria = ?, cor_secundaria = ?, imagem  = ? WHERE id = ?;'''
         cur = conn.cursor()
-        cur.execute(sql, (titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem))
+        cur.execute(sql, (titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem, id_produto))
         try:
             conn.commit()
             return 'sucesso'
         except:
             return 'erro'
+
+def excluir_produto(id):
+    conn = sqlite3.connect('bd.db')
+    cur = conn.cursor()
+    cur.execute(f"DELETE FROM produtos WHERE id = {id}")
+    try:
+        conn.commit()
+        return 'sucesso'
+    except:
+        return 'erro'
 
 def salvar(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem):
     conn = sqlite3.connect('bd.db')

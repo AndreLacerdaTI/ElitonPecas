@@ -10,11 +10,12 @@
             <h1>{{ detalhes[1] }}</h1>
             <div class="detalhes-layout">
                 <a class="fechar"  href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/icone_fechar.png') }}" alt="Produto 1"></a>
-                <img class="imagem-detalhes" src="{{ url_for('static', filename='produtos/' + detalhes[8]) }}" alt="Produto 1">
+                <div>
+                    <img class="imagem-detalhes" src="{{ url_for('static', filename='produtos/' + detalhes[8]) }}" alt="Produto 1">
+                    <h3>Descrição</h3>
+                    <p>{{ detalhes[2] }}</p>
+                </div>
                 <table>
-                    <tr>
-                        <td>Descrição</td><td>{{ detalhes[2] }}</td>
-                    </tr>
                     <tr>
                         <td>Tamanho</td>
                         <td>{{ detalhes[3] }}</td>
@@ -43,7 +44,6 @@
 
 {% if produtos %}
     <h1>Novidades</h1>
-    <a class="fechar"  href="{{ url_for('teste_mensagem') }}"><img src="{{ url_for('static', filename='images/icone_fechar.png') }}" alt="Fechar"></a>
     <div class="produtos">
         {% for produto in produtos %}
             <div class="produto">

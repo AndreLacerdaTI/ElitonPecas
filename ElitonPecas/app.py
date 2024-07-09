@@ -91,7 +91,57 @@ def form_admin():
             id = request.form['id']
             produto = select_produtos(id)
             return render_template('admin.html',editar=True, produto=produto)
+        elif 'confirmar' in request.form:
+            id = request.form['id']
+            titulo = request.form['titulo']
+            tamanho = request.form['tamanho']
+            return render_template('admin.html', confirmar=True, titulo=titulo, tamanho=tamanho, id=id)
+        elif 'excluir' in request.form:
+            id = request.form['id']
+            retorno = excluir_produto(id)
+            flash(retorno)
+            if retorno =='erro':
+                flash('Não foi possivel excluir o produto!')  
+            else:
+                flash('Produto excluido do catálogo!')
+            return render_template('admin.html')
+        elif 'cancelar' in request.form:
+            return render_template('admin.html')
+@app.route('/alterar_produto',  methods=['GET', 'POST'])
+def alterar_produto():
+    if request.method == 'POST':
+        if 'cancelar' in request.form:
+            return render_template('admin.html')
         
+    # (titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem)
+    id_produto = request.form['id']
+    titulo = request.form['titulo']
+    descricao = request.form['descricao']
+    tamanho = request.form['tamanho']
+    marcha = request.form['marcha']
+    freio = request.form['freio']
+    cor_primaria = request.form['cor_primaria']
+    cor_secundaria = request.form['cor_secundaria']
+    imagem = request.files['imagem']
+
+    if imagem:
+        image_path = os.path.join(app.config['UPLOAD_FOLDER'], imagem.filename)
+        imagem.save(image_path)
+        """with open(image_path, 'rb') as file:
+                image_blob = file.read()
+        """
+        imagem = imagem.filename
+        
+    else:
+        imagem_antiga = request.form['imagem_antiga']
+        imagem = imagem_antiga
+        print(imagem)
+    print(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem)
+    retorno = salvar_alteracao(titulo, descricao, tamanho, marcha, freio, cor_primaria, cor_secundaria, imagem, id_produto)
+    flash(retorno)
+    flash('Produto alterado com sucesso!')
+    flash(titulo + ' já está disponível no catálogo.')
+    return render_template('admin.html')  
 
 
 @app.route('/adicionar_produto',  methods=['GET', 'POST'])

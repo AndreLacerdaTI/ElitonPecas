@@ -252,6 +252,14 @@ nav ul li a:hover{
     width: 40px;
 }
 
+.navegacao{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
 table {
     width: 40%;
 }
